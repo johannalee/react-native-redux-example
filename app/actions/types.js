@@ -1,0 +1,1 @@
+export const SET_SEARCH_RECIPES = 'SET_SEARCH_RECIPES';
