@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ReactNative from 'react-native';
 import { connect } from 'react-redux';
+
 const {
   View,
   Text,
-  TouchableHighlight,
   StyleSheet,
+  TouchableHighlight,
 } = ReactNative;
 
 class Counter extends Component {
@@ -21,15 +22,58 @@ class Counter extends Component {
   render() {
     return (
       <View>
-        <View style={{marginTop:20}}>
-          <TouchableHighlight onPress={() => {this.decrementCounter()}}><Text>-</Text></TouchableHighlight>
-          <Text style={{marginTop:20}}>{ this.props.count }</Text>
-          <TouchableHighlight onPress={() => {this.incrementCounter()}}><Text>+</Text></TouchableHighlight>
+        <View style={styles.container}>
+          <TouchableHighlight
+            onPress={() => {this.decrementCounter()}}
+            style={styles.redBtn}>
+            <Text style={styles.btnText}>-</Text>
+          </TouchableHighlight>
+
+          <Text style={styles.label}>{this.props.count}</Text>
+
+          <TouchableHighlight
+            onPress={() => {this.incrementCounter()}}
+            style={styles.blueBtn}>
+            <Text style={styles.btnText}>+</Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection:'row',
+  },
+  label: {
+    textAlign: 'center',
+    fontSize: 40,
+    marginLeft: 30,
+    marginRight: 30,
+  },
+  redBtn: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor: "#dc143c",
+  },
+  blueBtn: {
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor: "#4169e1",
+  },
+  btnText: {
+    fontSize: 40,
+  }
+});
 
 function mapStateToProps(state) {
   return {

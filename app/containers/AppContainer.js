@@ -15,14 +15,6 @@ class AppContainer extends Component {
   }
 
   render() {
-    // return (
-    //   <View style={{marginTop:20}}>
-    //     <TouchableHighlight onPress={() => {this.decrementCount()}}><Text>-</Text></TouchableHighlight>
-    //     <Text style={{marginTop:20}}>{ this.props.count }</Text>
-    //     <TouchableHighlight onPress={() => {this.incrementCount()}}><Text>+</Text></TouchableHighlight>
-    //   </View>
-    // );
-
     return (
       <Counter {...this.props} />
     );
