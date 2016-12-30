@@ -6,14 +6,30 @@ import { bindActionCreators } from 'redux';
 
 const {
   View,
-  Text
+  Text,
+  TouchableHighlight
 } = ReactNative;
 
 class AppContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  incrementCount() {
+    this.setState({count: this.state.count+1});
+  }
+
+  decrementCount() {
+    this.setState({count: this.state.count-1});
+  }
+
   render() {
     return (
-      <View>
-        <Text style={{marginTop:20}}>App Container!!!</Text>
+      <View style={{marginTop:20}}>
+        <TouchableHighlight onPress={() => {this.decrementCount()}}><Text>-</Text></TouchableHighlight>
+        <Text style={{marginTop:20}}>{ this.state.count }</Text>
+        <TouchableHighlight onPress={() => {this.incrementCount()}}><Text>+</Text></TouchableHighlight>
       </View>
     );
   }
