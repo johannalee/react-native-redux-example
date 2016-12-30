@@ -5,3 +5,9 @@ export function incrementCounter() {
     type: types.INCREMENT_COUNTER
   };
 }
+
+export function decrementCounter() {
+  return {
+    type: types.DECREMENT_COUNTER
+  };
+}

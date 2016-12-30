@@ -11,24 +11,19 @@ const {
 } = ReactNative;
 
 class AppContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
-
   incrementCount() {
-    this.setState({count: this.state.count+1});
+    this.props.incrementCounter();
   }
 
   decrementCount() {
-    this.setState({count: this.state.count-1});
+    this.props.decrementCounter();
   }
 
   render() {
     return (
       <View style={{marginTop:20}}>
         <TouchableHighlight onPress={() => {this.decrementCount()}}><Text>-</Text></TouchableHighlight>
-        <Text style={{marginTop:20}}>{ this.state.count }</Text>
+        <Text style={{marginTop:20}}>{ this.props.count }</Text>
         <TouchableHighlight onPress={() => {this.incrementCount()}}><Text>+</Text></TouchableHighlight>
       </View>
     );
@@ -39,4 +34,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(() => { return {}; }, mapDispatchToProps)(AppContainer);
+export default connect((state) => {
+  return {
+    count: state.count
+  };
+}, mapDispatchToProps)(AppContainer);
