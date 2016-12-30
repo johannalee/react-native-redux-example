@@ -11,6 +11,8 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducer from './app/reducers';
 
+import AppContainer from './app/containers/AppContainer';
+
 const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ });
 
 function configureStore(initialState) {
@@ -26,29 +28,12 @@ function configureStore(initialState) {
 
 const store = configureStore({});
 
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-class Peckish extends Component {
-  render() {
-    return (
-      <View>
-        <Text style={{marginTop:20}}>
-          Welcome to React Native!
-        </Text>
-      </View>
-    );
-  }
-}
+import { AppRegistry } from 'react-native';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Peckish />
+      <AppContainer />
     </Provider>
   );
 };
