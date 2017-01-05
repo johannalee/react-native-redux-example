@@ -7,6 +7,31 @@ import reducer from './reducers';
 
 import AppContainer from './containers/AppContainer';
 
+import { createMiddleware } from 'redux-beacon';
+import { logger } from 'redux-beacon/extensions/logger';
+import { ReactNativeGoogleAnalytics } from 'redux-beacon/targets/react-native';
+import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+
+let reactNativeGA = new ReactNativeGoogleAnalytics('UA-87691859-3', GoogleAnalyticsTracker);
+
+const eventsMap = {
+  'INCREMENT_COUNTER': {
+    eventFields: (action, prevState) => ({
+      hitType: action.type.toLowerCase(),
+      eventCategory: 'Counter',
+      eventAction: 'Increment',
+    })
+  },
+  'DECREMENT_COUNTER': {
+    eventFields: (action, prevState) => ({
+      hitType: action.type.toLowerCase(),
+      eventCategory: 'Counter',
+      eventAction: 'Decrement',
+    })
+  },
+};
+
+const analyticsMiddleware = createMiddleware(eventsMap, reactNativeGA, { logger });
 const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ });
 
 function configureStore(initialState) {
@@ -14,6 +39,7 @@ function configureStore(initialState) {
     applyMiddleware(
       thunkMiddleware,
       loggerMiddleware,
+      analyticsMiddleware,
     ),
   );
 
