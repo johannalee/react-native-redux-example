@@ -1,5 +1,5 @@
 # react-native-redux-example
-This is a sample app using react-native and redux. You are expected to have all the prerequisite steps to run a react-native application. If not, please follow the instruction [here](https://facebook.github.io/react-native/docs/getting-started.html#content). 
+This is a sample app using react-native and redux. You are expected to have all the prerequisite steps to run a react-native application. If not, please follow the instruction [here](https://facebook.github.io/react-native/docs/getting-started.html#content).
 
 ### Quick Start
 Run
@@ -18,6 +18,21 @@ OR
 ```bash
 react-native run-ios
 ```
+
+### Redux-Beacon Examples
+This app is originally built for a showcase of [redux-beacon](https://github.com/rangle/redux-beacon) implementations in several targets.
+To see React Native Google Analytics Example, checkout to `google-analytics` branch
+```
+git checkout google-analytics
+```
+Then run the application with any of the commands shown above
+
+To see React Native Google Tag Manager Example, checkout to `google-tag-manager` branch
+```
+git checkout google-tag-manager
+```
+Then run the application with any of the commands shown above
+
 
 ### Demo Images
 #### Android
