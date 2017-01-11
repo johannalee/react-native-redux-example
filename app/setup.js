@@ -12,7 +12,7 @@ import { logger } from 'redux-beacon/extensions/logger';
 import { GoogleAnalytics } from 'redux-beacon/targets/react-native';
 import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
 
-let target = GoogleAnalytics('UA-87691859-2', GoogleAnalyticsTracker);
+const target = GoogleAnalytics('UA-XXXXXXXX-Y', GoogleAnalyticsTracker);
 
 const eventsMap = {
   'INCREMENT_COUNTER': {
