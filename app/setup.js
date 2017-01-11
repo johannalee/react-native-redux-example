@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AppRegistry, Platform } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -9,10 +10,11 @@ import AppContainer from './containers/AppContainer';
 
 import { createMiddleware } from 'redux-beacon';
 import { logger } from 'redux-beacon/extensions/logger';
-import { GoogleAnalytics } from 'redux-beacon/targets/react-native';
-import { GoogleAnalyticsTracker } from 'react-native-google-analytics-bridge';
+import { GoogleTagManager } from 'redux-beacon/targets/react-native';
+import { GoogleTagManager as GTMBridge } from 'react-native-google-analytics-bridge';
 
-let target = GoogleAnalytics('UA-87691859-2', GoogleAnalyticsTracker);
+const containerId = (Platform.OS === 'ios') ? 'GTM-IOSXXXX' : 'GTM-ANDROID';
+const target = GoogleTagManager(containerId, GTMBridge);
 
 const eventsMap = {
   'INCREMENT_COUNTER': {
@@ -47,8 +49,6 @@ function configureStore(initialState) {
 }
 
 const store = configureStore({});
-
-import { AppRegistry } from 'react-native';
 
 function setup() {
   class Root extends Component {
